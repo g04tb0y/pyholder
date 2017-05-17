@@ -1,0 +1,16 @@
+{
+	"send_mail": true,
+	"email_sender": "YOUREMAIL",
+	"email_recipient": "RECIPEMAIL",
+	"email_pwd": "EMAILPASSWORD",
+	"base_path": "/home/watchtower/pyholder",
+	"pid_file": "/home/watchtower/pyholder/pyholder.pid",
+	"log_file": "/home/watchtower/pyholder/log",
+	"min_upload_seconds": 1.5,
+	"min_motion_frames": 8,
+	"camera_warmup_time": 2.5,
+	"delta_thresh": 10,
+	"resolution": [1920, 1600],
+	"fps": 5,
+	"min_area": 3000
+}
