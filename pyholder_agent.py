@@ -28,8 +28,8 @@ from pymailer.mailer import MailerAgent
 
 
 def agent():
-    # wait for pyholder start before check status
-    time.sleep(30)
+
+    time.sleep(args["delay"])
     # Check CPU temperature
     temp_cmd = '/usr/bin/vcgencmd measure_temp'
     temp = subprocess.check_output(temp_cmd, shell=True)
@@ -103,6 +103,9 @@ if __name__ == "__main__":
                     help="Stop any %(prog)s instance. will be ignored if the option --start is set")
     ap.add_argument('--agent', action='store_true', dest="agent",
                     help="Send information about any current %(prog)s instance running and general system information")
+    ap.add_argument('-d', '--delay', type=int, default=0, dest="delay",
+                    help="Set a delay for the agent, useful when the agent is scheduled at boot time and"
+                         " a couples of minutes are needed before the connection is up")
     args = vars(ap.parse_args())
 
     # filter warnings, load the configuration
