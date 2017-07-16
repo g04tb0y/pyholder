@@ -4,7 +4,6 @@
 	"email_recipient": "RECIPEMAIL",
 	"email_pwd": "EMAILPASSWORD",
 	"base_path": "/home/watchtower/pyholder",
-	"pid_file": "/home/watchtower/pyholder/pyholder.pid",
 	"log_file": "/home/watchtower/pyholder/log",
 	"min_upload_seconds": 1.5,
 	"camera_warmup_time": 2.5,

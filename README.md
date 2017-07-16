@@ -33,7 +33,6 @@ You can change the base path using the using the json config file:
 	"base_path": "/home/watchtower/pyholder",
 	"log_file": "/home/watchtower/pyholder/log",
 	"min_upload_seconds": 1.5,
-	"min_motion_frames": 8,
 	"camera_warmup_time": 2.5,
 	"delta_thresh": 10,
 	"resolution": [1920, 1600],
