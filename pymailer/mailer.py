@@ -72,10 +72,11 @@ def sendmail(path, sender, recip, passwd, log_file):
     part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 
     msg.attach(part)
+    timeout = 60
 
     while True:
         try:
-            logging.info('SSL connection to google smtp...')
+            logging.debug('SSL connection to google smtp...')
             server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
             logging.debug('EHLO')
             server.ehlo()
@@ -90,7 +91,8 @@ def sendmail(path, sender, recip, passwd, log_file):
         except (smtplib.SMTPException, socket.timeout) as e:
             # Catch a connection error and wait for another try
             logging.error('Connection to google.com failed, wait and retry:\n{}'.format(e))
-            time.sleep(120)
+            time.sleep(timeout)
+            timeout = timeout * 2
             continue
         except Exception as e:
             logging.error('Error while sending mail:\n{}'.format(e))
@@ -113,6 +115,7 @@ def sendmail_agent(amsg, sender, recip, passwd, log_file):
 
     body = "\n%s\n%s\n" % (amsg, datetime.now())
     msg.attach(MIMEText(body, 'plain'))
+    timeout = 60
 
     while True:
         try:
@@ -131,7 +134,8 @@ def sendmail_agent(amsg, sender, recip, passwd, log_file):
         except (smtplib.SMTPException, socket.timeout) as e:
             # Catch a connection error and wait for another try
             logging.error('Connection to google.com failed, wait and retry:\n{}'.format(e))
-            time.sleep(120)
+            time.sleep(timeout)
+            timeout = timeout * 2
             continue
         except Exception as e:
             logging.error('Error while sending mail:\n{}'.format(e))
