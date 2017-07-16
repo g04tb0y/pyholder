@@ -23,9 +23,19 @@ import logging
 import subprocess
 import time
 import os
+import urllib2
 from datetime import datetime
 from subprocess import Popen
 from pymailer.mailer import MailerAgent
+
+
+def on_line():
+    try:
+        # Check if google.it is reachable
+        urllib2.urlopen('http://216.58.205.227', timeout=1)
+        return True
+    except Exception as e:
+        return False
 
 
 def agent():
@@ -120,6 +130,11 @@ if __name__ == "__main__":
     f_info = os.stat(conf['log_file'])
     if f_info.st_size > 1073741824:
         os.remove(conf['log_file'])
+
+    # Check connection
+    while not on_line():
+        logging.error("No internet connection!")
+        time.sleep(60)
 
     # Handle the input argument mutually exclusive
     if args["start"]:
