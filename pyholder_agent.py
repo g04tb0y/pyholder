@@ -22,6 +22,7 @@ import json
 import logging
 import subprocess
 import time
+import os
 from datetime import datetime
 from subprocess import Popen
 from pymailer.mailer import MailerAgent
@@ -114,6 +115,11 @@ if __name__ == "__main__":
     # Init logger
     logging.basicConfig(format='%(levelname)s - %(funcName)s: %(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
                            , level=logging.INFO, filename=conf['log_file'])
+
+    # Clean log file if is too big
+    f_info = os.stat(conf['log_file'])
+    if f_info.st_size > 1073741824:
+        os.remove(conf['log_file'])
 
     # Handle the input argument mutually exclusive
     if args["start"]:
