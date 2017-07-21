@@ -104,7 +104,7 @@ def sendmail(path, sender, recip, passwd, log_file):
 def sendmail_agent(amsg, sender, recip, passwd, log_file):
     logging.basicConfig(format='%(levelname)s - %(funcName)s:%(threadName)s: %(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
                         , level=logging.INFO, filename=log_file)
-    logging.info('Starting mailer agent...')
+    logging.debug('Starting mailer agent...')
 
     # Initializing th message
     msg = MIMEMultipart()
