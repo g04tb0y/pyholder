@@ -44,7 +44,7 @@ class MailerAgent(threading.Thread):
 def sendmail(path, sender, recip, passwd, log_file):
     logging.basicConfig(format='%(levelname)s - %(funcName)s:%(threadName)s: %(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p'
                         , level=logging.INFO, filename=log_file)
-    logging.info('Starting mailer...')
+    logging.debug('Starting mailer...')
 
     # Initializing th message
     msg = MIMEMultipart()
