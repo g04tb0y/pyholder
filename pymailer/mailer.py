@@ -72,7 +72,7 @@ def sendmail(path, sender, recip, passwd, log_file):
     part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 
     msg.attach(part)
-    timeout = 60
+    timeout = 30
 
     while True:
         try:
@@ -115,7 +115,7 @@ def sendmail_agent(amsg, sender, recip, passwd, log_file):
 
     body = "\n%s\n%s\n" % (amsg, datetime.now())
     msg.attach(MIMEText(body, 'plain'))
-    timeout = 60
+    timeout = 30
 
     while True:
         try:
