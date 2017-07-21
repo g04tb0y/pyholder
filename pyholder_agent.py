@@ -131,10 +131,12 @@ if __name__ == "__main__":
     if f_info.st_size > 1073741824:
         os.remove(conf['log_file'])
 
+    re_count = 10
     # Check connection
-    while not on_line():
+    while not on_line() and re_count > 0:
         logging.error("No internet connection!")
         time.sleep(60)
+        re_count -= 1
 
     # Handle the input argument mutually exclusive
     if args["start"]:
