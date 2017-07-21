@@ -45,7 +45,7 @@ def main():
         # capture frames from the camera
         for f in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
             # Wait to avoid to compute every frame and waste cpu resources
-            #time.sleep(conf["min_upload_seconds"])
+            # time.sleep(conf["min_upload_seconds"])
             # grab the raw NumPy array representing the image and initialize the timestamp
             frame = f.array
             timestamp = datetime.datetime.now()
@@ -132,7 +132,7 @@ def main():
         logging.info('Pyholder shutting down...bye!')
 
 
-# Start thread from the list every 5 sec. (NOT THREAD-SAFE QUEUE)
+# Start thread from the list every 4 sec. (NOT THREAD-SAFE QUEUE)
 def sequencer():
     while True:
         if t_msg_list:
