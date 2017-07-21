@@ -119,7 +119,7 @@ def sendmail_agent(amsg, sender, recip, passwd, log_file):
 
     while True:
         try:
-            logging.info('SSL connection to google smtp...')
+            logging.debug('SSL connection to google smtp...')
             server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
             logging.debug('EHLO')
             server.ehlo()
