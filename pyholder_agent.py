@@ -131,6 +131,13 @@ if __name__ == "__main__":
     if f_info.st_size > 1073741824:
         os.remove(conf['log_file'])
 
+    # Clean old jpg
+    count = len([name for name in os.listdir(conf['base_path'])])
+    if count > 4000:
+        for f in os.listdir(conf['base_path']):
+            if f.endswith('.jpg'):
+                os.remove(os.path.join(conf['base_path'], f))
+
     re_count = 10
     # Check connection
     while not on_line() and re_count > 0:
