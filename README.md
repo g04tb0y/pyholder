@@ -59,7 +59,7 @@ In this example the pyholder agent start pyholder every Sunday at 10 am and stop
 
 ## Authors
 
-* **Alessandro Bosco**
+* **G04tb0y**
 ## License
 
 This project is licensed under the GPLv3 - [www.gnu.org](http://www.gnu.org/licenses/)
